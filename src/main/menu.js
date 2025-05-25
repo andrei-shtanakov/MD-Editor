@@ -1,47 +1,47 @@
 const { Menu } = require('electron');
 
-function createMenu(mainWindow, fileOperations) {
+function createMenu(mainWindow) {
   const template = [
     {
-      label: 'Файл',
+      label: 'File',
       submenu: [
         {
-          label: 'Новый файл',
+          label: 'New',
           accelerator: 'CmdOrCtrl+N',
           click: () => mainWindow.webContents.send('menu-new-file')
         },
         {
-          label: 'Открыть',
+          label: 'Open',
           accelerator: 'CmdOrCtrl+O',
-          click: () => fileOperations.openFile()
+          click: () => mainWindow.webContents.send('menu-open-file')
         },
         {
-          label: 'Сохранить',
+          label: 'Save',
           accelerator: 'CmdOrCtrl+S',
           click: () => mainWindow.webContents.send('menu-save-file')
         },
         {
-          label: 'Сохранить как',
+          label: 'Save As',
           accelerator: 'CmdOrCtrl+Shift+S',
           click: () => mainWindow.webContents.send('menu-save-file-as')
         },
         { type: 'separator' },
         {
-          label: 'Выход',
+          label: 'Exit',
           accelerator: process.platform === 'darwin' ? 'Cmd+Q' : 'Ctrl+Q',
-          click: () => app.quit()
+          click: () => require('electron').app.quit()
         }
       ]
     },
     {
-      label: 'Правка',
+      label: 'Edit',
       submenu: [
-        { role: 'undo', label: 'Отменить' },
-        { role: 'redo', label: 'Повторить' },
+        { role: 'undo' },
+        { role: 'redo' },
         { type: 'separator' },
-        { role: 'cut', label: 'Вырезать' },
-        { role: 'copy', label: 'Копировать' },
-        { role: 'paste', label: 'Вставить' }
+        { role: 'cut' },
+        { role: 'copy' },
+        { role: 'paste' }
       ]
     }
   ];

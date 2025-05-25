@@ -2,21 +2,18 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('electronAPI', {
-  // Обработчики меню
+  // Menu handlers
   onMenuNewFile: (callback) => ipcRenderer.on('menu-new-file', callback),
+  onMenuOpenFile: (callback) => ipcRenderer.on('menu-open-file', callback),
   onMenuSaveFile: (callback) => ipcRenderer.on('menu-save-file', callback),
   onMenuSaveFileAs: (callback) => ipcRenderer.on('menu-save-file-as', callback),
   
-  // Обработчик открытия файла
-  onFileOpened: (callback) => ipcRenderer.on('file-opened', callback),
-  // В contextBridge.exposeInMainWorld добавьте:
-  triggerOpenFile: () => ipcRenderer.send('trigger-open-file'),
-  
-  // Методы для сохранения файлов
+  // File operations
+  openFileDialog: () => ipcRenderer.invoke('open-file-dialog'),
   saveFile: (path, content) => ipcRenderer.invoke('save-file', { path, content }),
   saveFileAs: (content) => ipcRenderer.invoke('save-file-as', content),
   
-  // Удаление слушателей
+  // Cleanup
   removeAllListeners: (channel) => ipcRenderer.removeAllListeners(channel)
 });
 
