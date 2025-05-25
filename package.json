@@ -14,12 +14,50 @@
   "license": "ISC",
   "description": "Markdown Editor built with Electron",
   "build": {
-    "appId": "com.yourname.markdown-editor",
-    "productName": "Markdown Editor",
+    "appId": "com.yourname.md-editor",
+    "productName": "MD-Editor",
     "directories": {
       "output": "dist"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": ["x64"]
+        },
+        {
+          "target": "snap",
+          "arch": ["x64"]
+        },
+        {
+          "target": "deb",
+          "arch": ["x64"]
+        }
+      ],
+      "category": "Development",
+      "description": "Simple Markdown editor built with Electron",
+      "maintainer": "Your Name <your.email@example.com>"
+    },
+    "deb": {
+      "depends": [
+        "libgtk-3-0",
+        "libnotify4",
+        "libnss3",
+        "libxss1",
+        "libxtst6",
+        "xdg-utils",
+        "libatspi2.0-0",
+        "libdrm2",
+        "libxcomposite1",
+        "libxdamage1",
+        "libxrandr2",
+        "libgbm1",
+        "libxkbcommon0",
+        "libasound2"
+      ]
     }
   },
+  "build:win": "electron-builder --win",
   "devDependencies": {
     "concurrently": "^9.1.2",
     "electron": "^36.3.1",
