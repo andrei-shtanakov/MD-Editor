@@ -1,0 +1,41 @@
+<!-- src/renderer/index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Editor</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+</head>
+<body>
+  <div class="app">
+    <div class="toolbar">
+      <button id="newBtn" class="btn">Новый</button>
+      <button id="openBtn" class="btn">Открыть</button>
+      <button id="saveBtn" class="btn">Сохранить</button>
+      <button id="saveAsBtn" class="btn">Сохранить как</button>
+      <span class="file-path" id="filePath">Новый документ</span>
+    </div>
+    
+    <div class="main-content">
+      <div class="editor-container">
+        <textarea id="editor" placeholder="Введите ваш Markdown здесь..."></textarea>
+      </div>
+      
+      <div class="preview-container">
+        <div id="preview" class="preview"></div>
+      </div>
+    </div>
+    
+    <div class="status-bar">
+      <span id="status">Готов</span>
+      <span id="wordCount">Слов: 0</span>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

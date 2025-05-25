@@ -1,0 +1,32 @@
+{
+  "name": "mde",
+  "version": "1.0.0",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "concurrently \"npm run watch\" \"electron .\"",
+    "build": "electron-builder",
+    "watch": "echo 'Watching files...'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Markdown Editor built with Electron",
+  "build": {
+    "appId": "com.yourname.markdown-editor",
+    "productName": "Markdown Editor",
+    "directories": {
+      "output": "dist"
+    }
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "electron": "^36.3.1",
+    "electron-builder": "^26.0.12"
+  },
+  "dependencies": {
+    "highlight.js": "^11.11.1",
+    "marked": "^15.0.12"
+  }
+}
